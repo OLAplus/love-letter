@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Love You Sabrina ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: black;
+    overflow: hidden;
+    color: white;
+}
+
+/* Fullscreen video */
+video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Center text */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Glow text */
+h1 {
+    font-size: 40px;
+    color: #ff4d6d;
+    text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+
+/* Typing text */
+#typing {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-800px); opacity: 0;}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop>
+    <source src="main.mp4" type="video/mp4">
+</video>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="Tum Hi Ho.mp3" type="audio/mp3">
+	<source src="Temporary Pyar.mp3" type="audio/mp3">
+	<source src="Sanam Re.mp3" type="audio/mp3">
+</audio>
+
+<div class="center">
+    <h1>I Love You Sabrina ❤️</h1>
+    <p id="typing"></p>
+    <button onclick="startLove()">💖 Feel My Love</button>
+</div>
+
+<script>
+
+/* Typing animation */
+const text = "You are my world 🌍❤️\nI miss you every moment...\nForever yours 💕\nI miss your smile,your voice, everything about you";
+let i = 0;
+
+function typeText() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeText, 50);
+    }
+}
+
+/* Start everything */
+function startLove() {
+    document.getElementById("music").play();
+    typeText();
+}
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
